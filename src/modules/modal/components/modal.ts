@@ -19,7 +19,7 @@ import { ModalConfig, ModalSize } from "../classes/modal-config";
             (click)="close()"></sui-dimmer>
 
 <!-- Modal component, with transition component attached -->
-<div class="ui modal"
+<div class="ui modal {{class}}"
      [suiTransition]="transitionController"
      [class.active]="transitionController?.isVisible"
      [class.fullscreen]="isFullScreen"
@@ -48,6 +48,10 @@ import { ModalConfig, ModalSize } from "../classes/modal-config";
 `]
 })
 export class SuiModal<T, U> implements OnInit, AfterViewInit {
+    @Input()
+    // Dynamic classes
+    public class:string;
+
     @Input()
     // Determines whether the modal can be closed with a close button, clicking outside, or the escape key.
     public isClosable:boolean;
